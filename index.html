@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пролистування фотографій</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .photo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .photo-container img {
+      max-height: 100vh;
+      max-width: 100vw;
+      object-fit: contain;
+    }
+
+    .prev-photo,
+    .next-photo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .prev-photo:hover,
+    .next-photo:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .prev-photo {
+      left: 10px;
+    }
+
+    .next-photo {
+      right: 10px;
+    }
+	.greeting-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 80%;
+      height: 80%;
+    }
+
+    .greeting {
+      font-size: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="photo-container">
+    <img src="1.jpg" alt="Photo 1">
+    <div class="prev-photo" onclick="showPrevPhoto()">&lt;</div>
+    <div class="next-photo" onclick="showNextPhoto()">&gt;</div>
+  </div>
+
+  <div class="greeting-container">
+    <div class="greeting">
+    <p>Дорога Соша,</p>
+    <p>Вітаю тебе з найособливішим днем - днем твого 18-річчя! Це день, 
+		коли ти офіційно стаєш дорослою особою і входиш у новий етап свого життя.
+	</p>
+    <p>Бажаю тобі безмежного успіху у всіх твоїх починаннях. Нехай кожен твій крок буде наповнений впевненістю і досягненнями. 
+	Ти маєш неймовірний потенціал, і я вірю, що зможеш досягти всього, чого тільки прагнеш. Я тобою безмежно пишаюсь!
+	</p>
+    <p>Нехай твоє життя буде наповнене радістю, любов'ю і щастям. Нехай кожен день приносить тобі нові можливості і чудові пригоди. 
+		Ти надзвичайна особистість зі сильним характером і прекрасними якостями, які приваблюють інших.
+	</p>
+    <p>
+	Також бажаю тобі фінансового достатку, щоб ти завжди мала достатньо ресурсів для здійснення своїх мрій і бажань. 
+	Нехай гроші приходять до тебе легко і несуть з собою можливості для твого розвитку і задоволення.
+	</p>
+    <p>Нехай Україна, переможе і повбиває всіх русаків нахуй. Ти є гордістю України, 
+	і нехай твої успіхи будуть символом сили і прогресу.
+	</p>
+    <p>Соша, ти неймовірно талановита, красива і чарівна особистість. Ти вражаєш мене наповал своєю красою,
+	і твоя усмішка змушує палати моє серце. Нехай твій шлях буде сповнений моментами радості, любові і вдячності.
+	</p>
+    <p>З днем народження, кохана Соша! Нехай цей день стане початком найкращих років твого життя!
+	</p>
+    <p>З любов'ю, Антоняра</p>
+	<p>Ті бебра!</p>
+    </div>
+  </div>
+
+  <script>
+    var currentPhotoIndex = 0;
+    var photoList = [
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+	  "4.jpg",
+	  "5.jpg",
+	  "6.jpg",
+	  "7.jpg",
+      // Додайте шляхи до інших фотографій, якщо потрібно
+    ];
+
+    function showPhoto(index) {
+      var photoContainer = document.querySelector('.photo-container');
+      var photo = photoContainer.querySelector('img');
+      photo.src = photoList[index];
+      currentPhotoIndex = index;
+    }
+
+    function showNextPhoto() {
+      if (currentPhotoIndex < photoList.length - 1) {
+        currentPhotoIndex++;
+      } else {
+        currentPhotoIndex = 0;
+      }
+      showPhoto(currentPhotoIndex);
+    }
+
+    function showPrevPhoto() {
+      if (currentPhotoIndex > 0) {
+        currentPhotoIndex--;
+      } else {
+        currentPhotoIndex = photoList.length - 1;
+      }
+      showPhoto(currentPhotoIndex);
+    }
+
+    // Початкове відображення першої фотографії
+    showPhoto(currentPhotoIndex);
+  </script>
+</body>
+</html>
